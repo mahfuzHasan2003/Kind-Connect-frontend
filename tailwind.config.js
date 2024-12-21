@@ -1,8 +1,16 @@
+import daisyui from "daisyui";
 /** @type {import('tailwindcss').Config} */
 export default {
    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
    theme: {
-      extend: {},
+      extend: {
+         maxWidth: {
+            "8xl": "90rem",
+         },
+      },
    },
-   plugins: [require("daisyui")],
+   plugins: [daisyui],
+   daisyui: {
+      themes: ["dim", "fantasy"],
+   },
 };
