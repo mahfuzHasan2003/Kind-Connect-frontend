@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import AllVolNeedPosts from "../pages/AllVolNeedPosts/AllVolNeedPosts";
 import PrivateRoute from "../private/PrivateRoute";
 import VolNeedPostDetails from "../pages/VolNeedPostDetails/VolNeedPostDetails";
+import AddVolNeedPost from "../pages/AddVolNeedPost/AddVolNeedPost";
 
 const routes = createBrowserRouter([
    {
@@ -33,6 +34,14 @@ const routes = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <VolNeedPostDetails />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/add-volunteer-need-post",
+            element: (
+               <PrivateRoute>
+                  <AddVolNeedPost />
                </PrivateRoute>
             ),
          },

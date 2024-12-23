@@ -55,7 +55,9 @@ const Navbar = () => {
                         <a>My Profile</a>
                         <ul className='p-2'>
                            <li>
-                              <a>Add Volunteer need Post</a>
+                              <Link to='/add-volunteer-need-post'>
+                                 Add Volunteer need Post
+                              </Link>
                            </li>
                            <li>
                               <a>Manage My Posts</a>
@@ -86,7 +88,9 @@ const Navbar = () => {
                         <summary>My Profile</summary>
                         <ul className='p-2 w-max z-50'>
                            <li>
-                              <a>Add Volunteer need Post</a>
+                              <Link to='/add-volunteer-need-post'>
+                                 Add Volunteer need Post
+                              </Link>
                            </li>
                            <li>
                               <a>Manage My Posts</a>
