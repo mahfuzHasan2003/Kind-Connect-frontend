@@ -41,24 +41,28 @@ const Navbar = () => {
                </div>
                <ul
                   tabIndex={0}
-                  className='menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-max p-2 shadow'>
+                  className='menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-max p-2 shadow'>
                   <li>
                      <Link to='/'>Home</Link>
                   </li>
                   <li>
-                     <Link to='/'>All volunteer Need posts</Link>
+                     <Link to='/all-volunteer-need-posts'>
+                        All volunteer Need posts
+                     </Link>
                   </li>
-                  <li>
-                     <a>My Profile</a>
-                     <ul className='p-2'>
-                        <li>
-                           <a>Add Volunteer need Post</a>
-                        </li>
-                        <li>
-                           <a>Manage My Posts</a>
-                        </li>
-                     </ul>
-                  </li>
+                  {user ? (
+                     <li>
+                        <a>My Profile</a>
+                        <ul className='p-2'>
+                           <li>
+                              <a>Add Volunteer need Post</a>
+                           </li>
+                           <li>
+                              <a>Manage My Posts</a>
+                           </li>
+                        </ul>
+                     </li>
+                  ) : null}
                </ul>
             </div>
             <Link to='/' className='text-xl font-bold'>
@@ -72,21 +76,25 @@ const Navbar = () => {
                   <Link to='/'>Home</Link>
                </li>
                <li>
-                  <Link to='/'>All volunteer Need posts</Link>
+                  <Link to='/all-volunteer-need-posts'>
+                     All volunteer Need posts
+                  </Link>
                </li>
-               <li>
-                  <details>
-                     <summary>My Profile</summary>
-                     <ul className='p-2 w-max'>
-                        <li>
-                           <a>Add Volunteer need Post</a>
-                        </li>
-                        <li>
-                           <a>Manage My Posts</a>
-                        </li>
-                     </ul>
-                  </details>
-               </li>
+               {user ? (
+                  <li>
+                     <details>
+                        <summary>My Profile</summary>
+                        <ul className='p-2 w-max z-50'>
+                           <li>
+                              <a>Add Volunteer need Post</a>
+                           </li>
+                           <li>
+                              <a>Manage My Posts</a>
+                           </li>
+                        </ul>
+                     </details>
+                  </li>
+               ) : null}
             </ul>
          </div>
 
@@ -133,7 +141,7 @@ const Navbar = () => {
                   </div>
                   <ul
                      tabIndex={0}
-                     className='menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-max p-2 shadow gap-3 border border-base-200'>
+                     className='menu menu-sm dropdown-content bg-base-100 rounded-md z-50 mt-3 w-max p-2 shadow gap-3 border border-base-200'>
                      <h3 className='text-xl font-semibold'>
                         {user?.displayName}
                      </h3>

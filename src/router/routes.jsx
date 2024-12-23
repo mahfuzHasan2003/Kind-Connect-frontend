@@ -3,6 +3,9 @@ import MainLayout from "../layouts/MainLayout";
 import LogIn from "../pages/Auth/LogIn";
 import Register from "../pages/Auth/Register";
 import Home from "../pages/Home/Home";
+import AllVolNeedPosts from "../pages/AllVolNeedPosts/AllVolNeedPosts";
+import PrivateRoute from "../private/PrivateRoute";
+import VolNeedPostDetails from "../pages/VolNeedPostDetails/VolNeedPostDetails";
 
 const routes = createBrowserRouter([
    {
@@ -20,6 +23,18 @@ const routes = createBrowserRouter([
          {
             path: "/auth/register",
             element: <Register />,
+         },
+         {
+            path: "/all-volunteer-need-posts",
+            element: <AllVolNeedPosts />,
+         },
+         {
+            path: "/volunteer-need-post-details/:id",
+            element: (
+               <PrivateRoute>
+                  <VolNeedPostDetails />
+               </PrivateRoute>
+            ),
          },
       ],
    },
