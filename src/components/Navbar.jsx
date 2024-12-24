@@ -16,6 +16,7 @@ const Navbar = () => {
       const selectedTheme = e.target.checked ? "dim" : "fantasy";
       setTheme(selectedTheme);
    };
+
    const { user, logOut } = useContext(AuthContext);
    return (
       <div className='navbar bg-base-100'>
@@ -53,14 +54,28 @@ const Navbar = () => {
                   {user ? (
                      <li>
                         <a>My Profile</a>
-                        <ul className='p-2'>
+                        <ul className='p-2 space-y-1'>
                            <li>
                               <Link to='/add-volunteer-need-post'>
-                                 Add Volunteer need Post
+                                 Add Volunteer Need Post
                               </Link>
                            </li>
                            <li>
-                              <a>Manage My Posts</a>
+                              <details>
+                                 <summary>Manage My Posts</summary>
+                                 <ul className='p-2 pl-4 space-y-1 bg-base-100 rounded-lg'>
+                                    <li>
+                                       <Link to='/my-volunteer-need-posts'>
+                                          My Volunteer Need Posts
+                                       </Link>
+                                    </li>
+                                    <li>
+                                       <Link to='/my-volunteer-request-posts'>
+                                          My Volunteer Request Posts
+                                       </Link>
+                                    </li>
+                                 </ul>
+                              </details>
                            </li>
                         </ul>
                      </li>
@@ -86,14 +101,28 @@ const Navbar = () => {
                   <li>
                      <details>
                         <summary>My Profile</summary>
-                        <ul className='p-2 w-max z-50'>
+                        <ul className='p-2 w-max z-50 bg-base-100 shadow-md rounded-lg'>
                            <li>
                               <Link to='/add-volunteer-need-post'>
-                                 Add Volunteer need Post
+                                 Add Volunteer Need Post
                               </Link>
                            </li>
                            <li>
-                              <a>Manage My Posts</a>
+                              <details>
+                                 <summary>Manage My Posts</summary>
+                                 <ul className='p-2 pl-4 w-max z-50 bg-base-100 rounded-lg'>
+                                    <li>
+                                       <Link to='/my-volunteer-need-posts'>
+                                          My Volunteer Need Posts
+                                       </Link>
+                                    </li>
+                                    <li>
+                                       <Link to='/my-volunteer-request-posts'>
+                                          My Volunteer Request Posts
+                                       </Link>
+                                    </li>
+                                 </ul>
+                              </details>
                            </li>
                         </ul>
                      </details>

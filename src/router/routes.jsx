@@ -7,6 +7,8 @@ import AllVolNeedPosts from "../pages/AllVolNeedPosts/AllVolNeedPosts";
 import PrivateRoute from "../private/PrivateRoute";
 import VolNeedPostDetails from "../pages/VolNeedPostDetails/VolNeedPostDetails";
 import AddVolNeedPost from "../pages/AddVolNeedPost/AddVolNeedPost";
+import MyVolNeedPost from "../pages/MyVolNeedPost/MyVolNeedPost";
+import MyVolReqPost from "../pages/MyVolReqPost/MyVolReqPost";
 
 const routes = createBrowserRouter([
    {
@@ -42,6 +44,22 @@ const routes = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <AddVolNeedPost />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/my-volunteer-need-posts",
+            element: (
+               <PrivateRoute>
+                  <MyVolNeedPost />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "/my-volunteer-request-posts",
+            element: (
+               <PrivateRoute>
+                  <MyVolReqPost />
                </PrivateRoute>
             ),
          },
