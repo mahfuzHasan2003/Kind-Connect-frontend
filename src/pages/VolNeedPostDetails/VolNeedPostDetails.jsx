@@ -42,6 +42,9 @@ const VolNeedPostDetails = () => {
          req_user: user,
          suggestion: suggestionRef.current.value,
          req_status: "requested",
+         thumbnail_url,
+         post_title,
+         location,
       };
       try {
          const { data } = await axios.post(

@@ -8,7 +8,9 @@ const MyVolNeedPost = () => {
    const [userVolNeedPosts, setUserVolNeedPosts] = useState([]);
    const fetchData = async () => {
       const { data } = await axios.get(
-         `http://localhost:3000/all-vol-need-posts?getAllByEmail=${user.email}`
+         `${import.meta.env.VITE_server_root}/all-vol-need-posts?email=${
+            user.email
+         }`
       );
       setUserVolNeedPosts(data);
    };

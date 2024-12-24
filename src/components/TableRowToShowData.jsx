@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker";
 import toast from "react-hot-toast";
 import { FaTrash } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 
 const TableRowToShowData = ({ post, index, fetchData }) => {
+   const { pathname } = useLocation();
    const modalRef = useRef();
    const {
       _id,
@@ -16,6 +18,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
       thumbnail_url,
       post_title,
       volunteers_needed,
+      req_status,
       location,
       deadline,
       category,
@@ -89,6 +92,34 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
       }
    };
 
+   const handleCancleReq = () => {
+      try {
+         Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+         }).then((result) => {
+            if (result.isConfirmed) {
+               axios.delete(
+                  `${import.meta.env.VITE_server_root}/to-be-vol-req/${_id}`
+               );
+               Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+               });
+               fetchData();
+            }
+         });
+      } catch (error) {
+         console.error(error);
+         toast.error(error.message);
+      }
+   };
    return (
       <tr>
          <th>{index + 1}</th>
@@ -107,20 +138,36 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                </div>
             </div>
          </td>
-         <td className='hidden md:table-cell'>{volunteers_needed}</td>
+         <td className='hidden md:table-cell'>
+            {pathname === "/my-volunteer-request-posts"
+               ? req_status
+               : volunteers_needed}
+         </td>
          <td className='*:m-1'>
-            <button
-               className='btn btn-warning btn-xs md:btn-sm'
-               onClick={() =>
-                  document.getElementById("edit_vol_need_post").showModal()
-               }>
-               <FiEdit />
-            </button>
-            <button
-               className='btn btn-error btn-xs md:btn-sm'
-               onClick={handleDeletePost}>
-               <FaTrash />
-            </button>
+            {pathname === "/my-volunteer-request-posts" ? (
+               <button
+                  className='btn btn-error btn-xs md:btn-sm'
+                  onClick={handleCancleReq}>
+                  cancel
+               </button>
+            ) : (
+               <>
+                  <button
+                     className='btn btn-warning btn-xs md:btn-sm'
+                     onClick={() =>
+                        document
+                           .getElementById("edit_vol_need_post")
+                           .showModal()
+                     }>
+                     <FiEdit />
+                  </button>
+                  <button
+                     className='btn btn-error btn-xs md:btn-sm'
+                     onClick={handleDeletePost}>
+                     <FaTrash />
+                  </button>
+               </>
+            )}
          </td>
 
          {/* Modal */}
