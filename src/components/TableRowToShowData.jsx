@@ -109,7 +109,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                );
                Swal.fire({
                   title: "Deleted!",
-                  text: "Your file has been deleted.",
+                  text: "Your request/post has been deleted.",
                   icon: "success",
                });
                fetchData();
@@ -154,11 +154,9 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                <>
                   <button
                      className='btn btn-warning btn-xs md:btn-sm'
-                     onClick={() =>
-                        document
-                           .getElementById("edit_vol_need_post")
-                           .showModal()
-                     }>
+                     onClick={() => {
+                        modalRef.current.showModal();
+                     }}>
                      <FiEdit />
                   </button>
                   <button
@@ -291,11 +289,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                         <button
                            className='btn'
                            type='reset'
-                           onClick={() =>
-                              document
-                                 .getElementById("edit_vol_need_post")
-                                 .close()
-                           }>
+                           onClick={() => modalRef.current.close()}>
                            Close
                         </button>
                         <button className='btn' type='submit'>
