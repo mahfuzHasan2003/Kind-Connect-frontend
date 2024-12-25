@@ -156,6 +156,7 @@ const AddVolNeedPost = () => {
                <DatePicker
                   selected={deadline}
                   onChange={(date) => setDeadline(date)}
+                  minDate={new Date()}
                   className='input input-bordered w-full'
                />
             </div>

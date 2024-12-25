@@ -281,6 +281,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                         <DatePicker
                            selected={newDeadline}
                            onChange={(date) => setNewDeadline(date)}
+                           minDate={new Date()}
                            className='input input-bordered w-full'
                         />
                      </div>

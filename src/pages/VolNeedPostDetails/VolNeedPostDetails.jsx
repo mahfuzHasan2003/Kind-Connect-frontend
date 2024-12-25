@@ -5,7 +5,7 @@ import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
-import { format } from "date-fns";
+import { compareDesc, format } from "date-fns";
 
 const VolNeedPostDetails = () => {
    const suggestionRef = useRef();
@@ -22,6 +22,7 @@ const VolNeedPostDetails = () => {
       deadline,
       organizer_name,
       organizer_email,
+      organizer_photoURL,
    } = post;
    const { user } = useContext(AuthContext);
    useEffect(() => {
@@ -61,6 +62,27 @@ const VolNeedPostDetails = () => {
       }
       navigate("/my-volunteer-request-posts");
    };
+
+   const handleBecomeAVolBTN = () => {
+      if (volunteers_needed === 0) {
+         Swal.fire({
+            icon: "error",
+            title: "Sorry...",
+            text: "No more volunteer needed for this post! Please try another one",
+         });
+         return;
+      }
+      if (compareDesc(new Date(), deadline) === -1) {
+         Swal.fire({
+            icon: "error",
+            title: "Opps...",
+            text: "Deadline Crossed! Please try another one",
+         });
+         return;
+      }
+      document.getElementById("request_volunteer").showModal();
+   };
+
    return (
       <div className='my-14'>
          <Helmet>
@@ -69,24 +91,17 @@ const VolNeedPostDetails = () => {
          <div className='text-center mb-5'>
             <button
                className='btn btn-secondary font-bold uppercase'
-               onClick={() => {
-                  if (volunteers_needed === 0) {
-                     Swal.fire({
-                        icon: "error",
-                        title: "Sorry...",
-                        text: "No more volunteer needed for this post! Please try another one",
-                     });
-                     return;
-                  }
-                  document.getElementById("request_volunteer").showModal();
-               }}>
+               onClick={handleBecomeAVolBTN}>
                Be a Volunteer
             </button>
          </div>
          <h2 className='font-semibold text-4xl'>Post Details</h2>
          <div className='inline-flex gap-3 items-center mt-10'>
             <img
-               src={thumbnail_url}
+               src={
+                  organizer_photoURL ||
+                  "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg"
+               }
                alt={organizer_name}
                className='w-10 md:w-14 aspect-square rounded-full border-2 border-primary'
             />
