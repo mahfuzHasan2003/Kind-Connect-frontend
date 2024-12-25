@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import VolNeedCard from "./VolNeedCard";
+import { Link } from "react-router-dom";
 
 const MakeAnImpactToday = () => {
    const [allVolNeedPosts, setAllVolNeedPosts] = useState([]);
@@ -30,7 +31,9 @@ const MakeAnImpactToday = () => {
             ))}
          </div>
          <div className='text-center'>
-            <button className='btn btn-primary mt-5'>See All Posts </button>
+            <Link to='/all-volunteer-need-posts'>
+               <button className='btn btn-primary mt-5'>See All Posts </button>
+            </Link>
          </div>
       </div>
    );

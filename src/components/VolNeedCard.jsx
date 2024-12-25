@@ -9,20 +9,20 @@ const VolNeedCard = ({ post, showExtra, gridLayout }) => {
    return (
       <div
          className={`${
-            gridLayout ? null : "flex md:gap-5 lg:gap-20 items-center"
+            !gridLayout ? null : "flex md:gap-5 lg:gap-20 items-center"
          } bg-base-200 rounded-md border`}>
          <img
             src={thumbnail_url}
             alt={post_title}
             className={` ${
-               gridLayout
+               !gridLayout
                   ? "rounded-t-md aspect-video"
                   : "rounded-l-md aspect-square h-full max-h-60 max-w-[40%]"
             } object-cover`}
          />
          <div
             className={`p-3 ${
-               gridLayout ? null : "md:flex justify-around items-center w-full"
+               !gridLayout ? null : "md:flex justify-around items-center w-full"
             }`}>
             <div>
                <h6 className='text-lg font-semibold mb-2'>{post_title}</h6>

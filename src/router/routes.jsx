@@ -9,6 +9,7 @@ import VolNeedPostDetails from "../pages/VolNeedPostDetails/VolNeedPostDetails";
 import AddVolNeedPost from "../pages/AddVolNeedPost/AddVolNeedPost";
 import MyVolNeedPost from "../pages/MyVolNeedPost/MyVolNeedPost";
 import MyVolReqPost from "../pages/MyVolReqPost/MyVolReqPost";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 const routes = createBrowserRouter([
    {
@@ -64,6 +65,10 @@ const routes = createBrowserRouter([
             ),
          },
       ],
+   },
+   {
+      path: "*",
+      element: <ErrorPage />,
    },
 ]);
 

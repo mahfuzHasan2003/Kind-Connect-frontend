@@ -4,11 +4,12 @@ import VolNeedCard from "../../components/VolNeedCard";
 import { useEffect, useState } from "react";
 import { RiLayoutGrid2Fill } from "react-icons/ri";
 import { MdViewList } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const AllVolNeedPosts = () => {
    const [searchValue, setSearchValue] = useState("");
    const [allPosts, setAllPosts] = useState([]);
-   const [gridLayout, setGridLayout] = useState(true);
+   const [gridLayout, setGridLayout] = useState(false);
 
    useEffect(() => {
       const fetchData = async () => {
@@ -56,6 +57,9 @@ const AllVolNeedPosts = () => {
    //    );
    return (
       <div className='my-14'>
+         <Helmet>
+            <title> KindConnect | All volunteer request posts</title>
+         </Helmet>
          <div className='md:flex justify-between items-center'>
             <h2 className='font-semibold text-xl md:text-2xl lg:text-4xl'>
                Explore Volunteer Opportunities
@@ -82,7 +86,7 @@ const AllVolNeedPosts = () => {
          </div>
          <div
             className={`grid grid-cols-1 ${
-               gridLayout && "md:grid-cols-2 lg:grid-cols-3"
+               !gridLayout && "md:grid-cols-2 lg:grid-cols-3"
             } gap-2 md:gap-3 lg:gap-5 mt-10`}>
             {allPosts.map((post) => (
                <VolNeedCard

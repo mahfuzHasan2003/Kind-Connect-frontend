@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const VolNeedPostDetails = () => {
    const suggestionRef = useRef();
@@ -56,10 +57,13 @@ const VolNeedPostDetails = () => {
          console.error(error);
          toast.error(error.message);
       }
-      navigate("/");
+      navigate("/my-volunteer-request-posts");
    };
    return (
       <div className='my-14'>
+         <Helmet>
+            <title> KindConnect | Volunteer need post details</title>
+         </Helmet>
          <div className='text-center mb-5'>
             <button
                className='btn btn-secondary font-bold uppercase'

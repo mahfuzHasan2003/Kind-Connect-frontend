@@ -6,6 +6,7 @@ import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddVolNeedPost = () => {
    const navigate = useNavigate();
@@ -42,7 +43,7 @@ const AddVolNeedPost = () => {
             `${import.meta.env.VITE_server_root}/all-vol-need-posts`,
             postData
          );
-         navigate("/");
+         navigate("/my-volunteer-need-posts");
          toast.success("posted successfully");
       } catch (error) {
          console.error(error);
@@ -51,6 +52,9 @@ const AddVolNeedPost = () => {
    };
    return (
       <form className='my-14' onSubmit={handleAddPost}>
+         <Helmet>
+            <title> KindConnect | Add volunteer need posts</title>
+         </Helmet>
          <h3 className='font-bold text-xl mb-5'>Add volunteer need post</h3>
          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
             <div className='form-control'>
