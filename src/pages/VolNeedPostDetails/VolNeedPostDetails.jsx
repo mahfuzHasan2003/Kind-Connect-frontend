@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
+import { format } from "date-fns";
 
 const VolNeedPostDetails = () => {
    const suggestionRef = useRef();
@@ -67,9 +69,17 @@ const VolNeedPostDetails = () => {
          <div className='text-center mb-5'>
             <button
                className='btn btn-secondary font-bold uppercase'
-               onClick={() =>
-                  document.getElementById("request_volunteer").showModal()
-               }>
+               onClick={() => {
+                  if (volunteers_needed === 0) {
+                     Swal.fire({
+                        icon: "error",
+                        title: "Sorry...",
+                        text: "No more volunteer needed for this post! Please try another one",
+                     });
+                     return;
+                  }
+                  document.getElementById("request_volunteer").showModal();
+               }}>
                Be a Volunteer
             </button>
          </div>
@@ -98,7 +108,9 @@ const VolNeedPostDetails = () => {
             <div className='flex flex-wrap gap-x-5 gap-y-3 items-center'>
                <p className='text-sm md:text-base'>
                   <span className='font-semibold'>Deadline: </span>
-                  <span>{deadline}</span>
+                  {deadline ? (
+                     <span>{format(new Date(deadline), "dd MMM yyyy")}</span>
+                  ) : null}
                </p>
                <p className='text-sm md:text-base'>
                   <span className='font-semibold'>Location: </span>
@@ -186,12 +198,14 @@ const VolNeedPostDetails = () => {
                         <label className='label'>
                            <span className='label-text'>Deadline</span>
                         </label>
-                        <input
-                           type='text'
-                           defaultValue={deadline}
-                           className='input input-bordered w-full'
-                           disabled
-                        />
+                        {deadline ? (
+                           <input
+                              type='text'
+                              defaultValue={format(deadline, "dd MMM yyyy")}
+                              className='input input-bordered w-full'
+                              disabled
+                           />
+                        ) : null}
                      </div>
                      <div className='form-control'>
                         <label className='label'>

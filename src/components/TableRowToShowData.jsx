@@ -40,7 +40,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
       const newPostTitle = e.target.post_title.value;
       const newDescription = e.target.description.value;
       const newLocation = e.target.location.value;
-      const newVolNeeded = e.target.volunteers_needed.value;
+      const newVolNeeded = parseInt(e.target.volunteers_needed.value);
       const editedData = {
          thumbnail_url: newThumbnailURL,
          post_title: newPostTitle,

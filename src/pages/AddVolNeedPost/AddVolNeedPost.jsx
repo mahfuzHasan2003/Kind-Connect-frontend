@@ -25,7 +25,7 @@ const AddVolNeedPost = () => {
       const post_title = e.target.post_title.value;
       const description = e.target.description.value;
       const location = e.target.location.value;
-      const volunteers_needed = e.target.volunteers_needed.value;
+      const volunteers_needed = parseInt(e.target.volunteers_needed.value);
       const postData = {
          thumbnail_url,
          post_title,

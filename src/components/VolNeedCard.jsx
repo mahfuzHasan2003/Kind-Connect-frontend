@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { BiSolidCategory } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCalendarNumber } from "react-icons/io5";
@@ -32,7 +33,7 @@ const VolNeedCard = ({ post, showExtra, gridLayout }) => {
                </div>
                <div className=' flex items-center gap-2'>
                   <IoCalendarNumber />
-                  <p>{deadline}</p>
+                  {deadline ? <p>{format(deadline, "dd MMM yyyy")}</p> : null}
                </div>
                {showExtra && (
                   <div className=' flex items-center gap-2'>
