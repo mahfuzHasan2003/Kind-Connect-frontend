@@ -8,14 +8,12 @@ const MyVolNeedPost = () => {
    const { user } = useAuth();
    const [userVolNeedPosts, setUserVolNeedPosts] = useState([]);
    const axiosSecure = useAxiosSecure();
-   const [loading, setLoading] = useState(true);
 
    const fetchData = async () => {
       const { data } = await axiosSecure.get(
          `/user-vol-need-posts?email=${user.email}`
       );
       setUserVolNeedPosts(data);
-      setLoading(false);
    };
    useEffect(() => {
       fetchData();
