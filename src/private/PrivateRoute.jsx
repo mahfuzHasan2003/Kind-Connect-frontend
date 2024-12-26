@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { AuthContext } from "../provider/AuthDataProvider";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
-   const { user, loading } = useContext(AuthContext);
+   const { user, loading } = useAuth();
    if (loading)
       return <span className='loading loading-ring loading-lg'></span>;
    return user ? children : <Navigate to='/auth/login' />;

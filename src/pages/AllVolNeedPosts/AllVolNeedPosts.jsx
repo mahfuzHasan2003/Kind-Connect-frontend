@@ -14,7 +14,9 @@ const AllVolNeedPosts = () => {
       queryKey: ["AllVolNeedPosts", searchValue],
       queryFn: async () => {
          const { data } = await axios.get(
-            `http://localhost:3000/all-vol-need-posts?search=${searchValue}`
+            `${
+               import.meta.env.VITE_server_root
+            }/all-vol-need-posts?search=${searchValue}`
          );
          return data;
       },
@@ -55,7 +57,7 @@ const AllVolNeedPosts = () => {
             <div className='text-center mt-20'>
                <span className='loading loading-ring loading-lg'></span>
             </div>
-         ) : (
+         ) : allPosts.length > 0 ? (
             <div
                className={`grid grid-cols-1 ${
                   !gridLayout && "md:grid-cols-2 lg:grid-cols-3"
@@ -69,6 +71,8 @@ const AllVolNeedPosts = () => {
                   />
                ))}
             </div>
+         ) : (
+            <p className='mt-10'> No data found..</p>
          )}
       </div>
    );

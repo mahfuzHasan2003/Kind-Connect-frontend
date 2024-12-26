@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../provider/AuthDataProvider";
 import toast from "react-hot-toast";
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
    const navigate = useNavigate();
@@ -17,7 +17,8 @@ const Navbar = () => {
       setTheme(selectedTheme);
    };
 
-   const { user, logOut } = useContext(AuthContext);
+   const { user, logOut } = useAuth();
+
    return (
       <div className='navbar bg-base-100'>
          <div className='navbar-start'>
@@ -167,7 +168,7 @@ const Navbar = () => {
                      <div className='w-10 rounded-full'>
                         <img
                            alt='User Profile Image'
-                           src={user.photoURL}
+                           src={user?.photoURL}
                            referrerPolicy='no-referrer'
                         />
                      </div>

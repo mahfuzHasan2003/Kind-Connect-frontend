@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import CreatableSelect from "react-select/creatable";
 import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useAuth } from "../../hooks/useAuth";
 
 const AddVolNeedPost = () => {
    const navigate = useNavigate();
@@ -18,7 +18,7 @@ const AddVolNeedPost = () => {
       { value: "Social Service", label: "Social Service" },
       { value: "Animal Welfare", label: "Animal Welfare" },
    ];
-   const { user } = useContext(AuthContext);
+   const { user } = useAuth();
    const handleAddPost = async (e) => {
       e.preventDefault();
       const thumbnail_url = e.target.thumbnail_url.value;

@@ -1,23 +1,23 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthDataProvider";
+import { useEffect, useState } from "react";
 import TableRowToShowData from "../../components/TableRowToShowData";
 import { Helmet } from "react-helmet";
+import { useAuth } from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyVolNeedPost = () => {
-   const { user } = useContext(AuthContext);
+   const { user } = useAuth();
    const [userVolNeedPosts, setUserVolNeedPosts] = useState([]);
+   const axiosSecure = useAxiosSecure();
+
    const fetchData = async () => {
-      const { data } = await axios.get(
-         `${import.meta.env.VITE_server_root}/all-vol-need-posts?email=${
-            user.email
-         }`
+      const { data } = await axiosSecure.get(
+         `/user-vol-need-posts?email=${user.email}`
       );
       setUserVolNeedPosts(data);
    };
    useEffect(() => {
       fetchData();
-   }, [user.email]);
+   }, [user]);
    return (
       <div className='my-14'>
          <Helmet>

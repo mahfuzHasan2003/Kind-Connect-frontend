@@ -1,17 +1,19 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../provider/AuthDataProvider";
+import { useEffect, useState } from "react";
 import TableRowToShowData from "../../components/TableRowToShowData";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useAuth } from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyVolReqPost = () => {
    const { pathname } = useLocation();
-   const { user } = useContext(AuthContext);
+   const { user } = useAuth();
+   const axiosSecure = useAxiosSecure();
    const [userVolReqPosts, setUserVolReqPosts] = useState([]);
    const fetchData = async () => {
-      const { data } = await axios.get(
-         `${import.meta.env.VITE_server_root}/to-be-vol-req?email=${user.email}`
+      const { data } = await axiosSecure.get(
+         `/to-be-vol-req?email=${user.email}`
       );
       setUserVolReqPosts(data);
    };

@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthDataProvider";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import { compareDesc, format } from "date-fns";
+import { useAuth } from "../../hooks/useAuth";
 
 const VolNeedPostDetails = () => {
    const suggestionRef = useRef();
@@ -24,7 +24,7 @@ const VolNeedPostDetails = () => {
       organizer_email,
       organizer_photoURL,
    } = post;
-   const { user } = useContext(AuthContext);
+   const { user } = useAuth();
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -64,6 +64,16 @@ const VolNeedPostDetails = () => {
    };
 
    const handleBecomeAVolBTN = () => {
+      if (user?.email === organizer_email) {
+         if (volunteers_needed === 0) {
+            Swal.fire({
+               icon: "warning",
+               title: "Heyy...",
+               text: "Action not permitted",
+            });
+            return;
+         }
+      }
       if (volunteers_needed === 0) {
          Swal.fire({
             icon: "error",

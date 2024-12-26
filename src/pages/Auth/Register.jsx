@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import authSideImage from "../../assets/auth-side-image.svg";
 import googleLogo from "../../assets/google-logo.svg";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../provider/AuthDataProvider";
+import { useState } from "react";
 import toast from "react-hot-toast";
+import { useAuth } from "../../hooks/useAuth";
 
 const Register = () => {
    const [showPass, setShowPass] = useState(false);
@@ -18,7 +18,7 @@ const Register = () => {
       isValidEmail,
       isValidPassword,
       isValidPhotoURL,
-   } = useContext(AuthContext);
+   } = useAuth();
 
    const handleRegister = (e) => {
       e.preventDefault();
