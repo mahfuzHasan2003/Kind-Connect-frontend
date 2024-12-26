@@ -4,7 +4,11 @@ import { useAuth } from "../hooks/useAuth";
 const PrivateRoute = ({ children }) => {
    const { user, loading } = useAuth();
    if (loading)
-      return <span className='loading loading-ring loading-lg'></span>;
+      return (
+         <div className='mt-20 text-center'>
+            <span className='loading loading-ring loading-lg'></span>
+         </div>
+      );
    return user ? children : <Navigate to='/auth/login' />;
 };
 
