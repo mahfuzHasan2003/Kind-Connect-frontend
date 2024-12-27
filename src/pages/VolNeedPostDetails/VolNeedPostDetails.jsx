@@ -125,7 +125,7 @@ const VolNeedPostDetails = () => {
                className='w-full max-w-xl'
             />
             <h3 className='text-xl md:text-3xl font-bold'>
-               <span>Game Name: </span>
+               <span>Title: </span>
                {post_title}
             </h3>
             <div className='flex flex-wrap gap-x-5 gap-y-3 items-center'>
