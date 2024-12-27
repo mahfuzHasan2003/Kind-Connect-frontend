@@ -13,6 +13,7 @@ const VolNeedCard = ({ post, showExtra, gridLayout }) => {
             !gridLayout ? null : "flex md:gap-5 lg:gap-20 items-center"
          } bg-base-200 rounded-md border`}>
          <img
+            loading='lazy'
             src={thumbnail_url}
             alt={post_title}
             className={` ${

@@ -106,6 +106,7 @@ const VolNeedPostDetails = () => {
          <h2 className='font-semibold text-4xl'>Post Details</h2>
          <div className='inline-flex gap-3 items-center mt-10'>
             <img
+               loading='lazy'
                src={
                   organizer_photoURL ||
                   "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg"

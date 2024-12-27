@@ -3,7 +3,7 @@ import { Zoom } from "react-awesome-reveal";
 const FAQsPage = () => {
    return (
       <div className='my-10 space-y-2'>
-         <Zoom>
+         <Zoom triggerOnce>
             <h2 className='font-semibold text-4xl mb-10 text-center'>
                Got Questions? We Have Answers!
             </h2>
