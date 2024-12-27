@@ -65,14 +65,12 @@ const VolNeedPostDetails = () => {
 
    const handleBecomeAVolBTN = () => {
       if (user?.email === organizer_email) {
-         if (volunteers_needed === 0) {
-            Swal.fire({
-               icon: "warning",
-               title: "Heyy...",
-               text: "Action not permitted",
-            });
-            return;
-         }
+         Swal.fire({
+            icon: "warning",
+            title: "Heyy...",
+            text: "Action not permitted",
+         });
+         return;
       }
       if (volunteers_needed === 0) {
          Swal.fire({
