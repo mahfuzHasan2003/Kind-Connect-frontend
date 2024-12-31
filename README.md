@@ -28,3 +28,7 @@ _Additionally, JWT (JSON Web Token) is implemented for secure API communication 
 ## Project Live View:
 
 Click on the link : [https://kind-connect-a2f7a.web.app/](https://kind-connect-a2f7a.web.app/)
+
+## Backend Repository:
+
+Click on the link : [https://github.com/mahfuzHasan2003/Kind-Connect-backend](https://github.com/mahfuzHasan2003/Kind-Connect-backend)
