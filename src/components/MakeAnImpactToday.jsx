@@ -32,7 +32,7 @@ const MakeAnImpactToday = () => {
       </div>
       <div className="text-center">
         <Link to="/all-volunteer-need-posts">
-          <button className="btn btn-secondary mt-5">See All Posts </button>
+          <button className="btn btn-primary mt-5">See All Posts </button>
         </Link>
       </div>
     </div>
