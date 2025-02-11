@@ -98,7 +98,7 @@ const VolNeedPostDetails = () => {
       </Helmet>
       <div className="text-center mb-5">
         <button
-          className="btn btn-secondary font-bold uppercase"
+          className="btn btn-success font-bold uppercase"
           onClick={handleBecomeAVolBTN}
         >
           Be a Volunteer
