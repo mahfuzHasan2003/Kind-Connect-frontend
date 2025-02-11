@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 import HomeSlider from "../../components/HomeSlider";
 import MakeAnImpactToday from "../../components/MakeAnImpactToday";
-import Footer from "../../components/Footer";
 import FAQsPage from "../../components/FAQsPage";
 import NewsLetter from "../../components/NewsLetter";
 import { Fade } from "react-awesome-reveal";

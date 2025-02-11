@@ -123,7 +123,25 @@ const AddVolNeedPost = () => {
             isClearable
             onChange={(selectedOption) => setCategory(selectedOption.value)}
             options={options}
-            className="text-neutral"
+            styles={{
+              option: (base) => ({
+                ...base,
+                backgroundColor: "#FFFFFF",
+                color: "#2b2b2b",
+              }),
+              control: (base) => ({
+                ...base,
+                backgroundColor: "transparent",
+              }),
+              menu: (base) => ({
+                ...base,
+                backgroundColor: "#FFFFFF",
+              }),
+              singleValue: (base) => ({
+                ...base,
+                color: "inherit",
+              }),
+            }}
           />
         </div>
         <div className="form-control">

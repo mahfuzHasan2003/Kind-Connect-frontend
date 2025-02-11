@@ -10,7 +10,6 @@ import Lottie from "lottie-react";
 const Register = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  console.log(state);
 
   const {
     logInWithGoogle,
@@ -61,7 +60,7 @@ const Register = () => {
       .catch((err) => setError(err.code));
   };
   if (user && user?.email) {
-    return <Navigate to="/" />;
+    return <Navigate to={state?.redirectTo || "/"} />;
   } else {
     return (
       <div className="hero md:my-20 rounded-md py-10">

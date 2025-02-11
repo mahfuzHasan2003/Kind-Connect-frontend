@@ -11,7 +11,6 @@ const LogIn = () => {
   const { state } = useLocation();
   const [showPass, setShowPass] = useState(false);
   const redirectTo = state?.redirectTo || "/";
-  console.log(redirectTo);
 
   const { logInWithGoogle, logInWithEmail, user } = useAuth();
 
@@ -31,7 +30,7 @@ const LogIn = () => {
   };
 
   if (user && user?.email) {
-    return <Navigate to="/" />;
+    return <Navigate to={redirectTo} />;
   } else {
     return (
       <div className="hero md:my-20 rounded-md py-20">
