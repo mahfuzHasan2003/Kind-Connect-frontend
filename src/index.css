@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 body {
-   font-family: "Montserrat", serif;
-   overflow-y: scroll;
+  font-family: "Montserrat", serif;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }

@@ -10,66 +10,71 @@ import AddVolNeedPost from "../pages/AddVolNeedPost/AddVolNeedPost";
 import MyVolNeedPost from "../pages/MyVolNeedPost/MyVolNeedPost";
 import MyVolReqPost from "../pages/MyVolReqPost/MyVolReqPost";
 import ErrorPage from "../pages/Error/ErrorPage";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const routes = createBrowserRouter([
-   {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-         {
-            path: "/",
-            element: <Home />,
-         },
-         {
-            path: "/auth/login",
-            element: <LogIn />,
-         },
-         {
-            path: "/auth/register",
-            element: <Register />,
-         },
-         {
-            path: "/all-volunteer-need-posts",
-            element: <AllVolNeedPosts />,
-         },
-         {
-            path: "/volunteer-need-post-details/:id",
-            element: (
-               <PrivateRoute>
-                  <VolNeedPostDetails />
-               </PrivateRoute>
-            ),
-         },
-         {
-            path: "/add-volunteer-need-post",
-            element: (
-               <PrivateRoute>
-                  <AddVolNeedPost />
-               </PrivateRoute>
-            ),
-         },
-         {
-            path: "/my-volunteer-need-posts",
-            element: (
-               <PrivateRoute>
-                  <MyVolNeedPost />
-               </PrivateRoute>
-            ),
-         },
-         {
-            path: "/my-volunteer-request-posts",
-            element: (
-               <PrivateRoute>
-                  <MyVolReqPost />
-               </PrivateRoute>
-            ),
-         },
-      ],
-   },
-   {
-      path: "*",
-      element: <ErrorPage />,
-   },
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/auth/login",
+        element: <LogIn />,
+      },
+      {
+        path: "/auth/register",
+        element: <Register />,
+      },
+      {
+        path: "/all-volunteer-need-posts",
+        element: <AllVolNeedPosts />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/volunteer-need-post-details/:id",
+        element: (
+          <PrivateRoute>
+            <VolNeedPostDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-volunteer-need-post",
+        element: (
+          <PrivateRoute>
+            <AddVolNeedPost />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-volunteer-need-posts",
+        element: (
+          <PrivateRoute>
+            <MyVolNeedPost />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-volunteer-request-posts",
+        element: (
+          <PrivateRoute>
+            <MyVolReqPost />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
 ]);
 
 export default routes;
