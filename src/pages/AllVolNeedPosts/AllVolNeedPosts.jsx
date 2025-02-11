@@ -7,14 +7,15 @@ import { Helmet } from "react-helmet";
 
 const AllVolNeedPosts = () => {
   const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState("all");
 
   const { data: allPosts, isLoading } = useQuery({
-    queryKey: ["AllVolNeedPosts", searchValue],
+    queryKey: ["AllVolNeedPosts", searchValue, category],
     queryFn: async () => {
       const { data } = await axios.get(
         `${
           import.meta.env.VITE_server_root
-        }/all-vol-need-posts?search=${searchValue}`
+        }/all-vol-need-posts?search=${searchValue}&category=${category}`
       );
       return data;
     },
@@ -29,16 +30,31 @@ const AllVolNeedPosts = () => {
         <h2 className="font-semibold text-xl md:text-2xl lg:text-4xl">
           Explore Volunteer Opportunities
         </h2>
-        <div className="mt-5 md:mt-0 flex items-center gap-1 md:gap-3 lg:gap-5">
-          <label className="input input-sm md:input-md input-bordered flex items-center gap-2 pr-0 w-full">
-            <input
-              type="text"
-              onChange={(e) => setSearchValue(e.target.value)}
-              value={searchValue}
-              className="grow w-full"
-              placeholder="search by title.."
-            />
-          </label>
+        <div className="flex gap-3 md:gap-5 items-center mt-5 md:mt-0">
+          <select
+            className="select select-bordered w-full max-w-[150px]"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          >
+            <option selected value="all">
+              All Category
+            </option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Social Service">Social Service</option>
+            <option value="Animal Welfare">Animal Welfare</option>
+          </select>
+          <div className="flex items-center gap-1 md:gap-3 lg:gap-5 w-full">
+            <label className="input input-bordered flex items-center gap-2 pr-0 w-full">
+              <input
+                type="text"
+                onChange={(e) => setSearchValue(e.target.value)}
+                value={searchValue}
+                className="grow w-full"
+                placeholder="search by title.."
+              />
+            </label>
+          </div>
         </div>
       </div>
 
