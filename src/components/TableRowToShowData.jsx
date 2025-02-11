@@ -91,8 +91,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
       toast.error(error.message);
     }
   };
-
-  const handleCancleReq = () => {
+  const handleCancelReq = () => {
     try {
       Swal.fire({
         title: "Are you sure?",
@@ -145,7 +144,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
         {pathname === "/my-volunteer-request-posts" ? (
           <button
             className="btn btn-error btn-xs md:btn-sm"
-            onClick={handleCancleReq}
+            onClick={handleCancelReq}
           >
             cancel
           </button>
@@ -176,35 +175,13 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
         ref={modalRef}
       >
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Request to be a volunteer</h3>
+          <h3 className="font-bold text-lg">Edit your volunteer need post</h3>
           <div className="mt-5">
             <form
               method="dialog"
               className="flex flex-col gap-2"
               onSubmit={handleUpdatePost}
             >
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Organizer Name</span>
-                </label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  defaultValue={organizer_name}
-                  disabled
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Organizer Email</span>
-                </label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  defaultValue={organizer_email}
-                  disabled
-                />
-              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Thumbnail URL</span>
@@ -315,7 +292,7 @@ const TableRowToShowData = ({ post, index, fetchData }) => {
                 >
                   Close
                 </button>
-                <button className="btn" type="submit">
+                <button className="btn btn-primary" type="submit">
                   Update
                 </button>
               </div>
